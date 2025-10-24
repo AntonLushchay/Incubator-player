@@ -1,75 +1,26 @@
-import { useEffect, useState } from 'react'
+import { Header } from './components/Header.tsx'
+import { SideBar } from './components/Side-bar.tsx'
+import { TracksList } from './components/TracksList.tsx'
+import { TrackDetails } from './components/TrackDetails.tsx'
+import { Footer } from './components/Footer.tsx'
+import { useState } from 'react'
 
-type TrackType = {
-    attributes: object
-    id: string
-    relationships: object
-    type: string
-}
-
-function App() {
-    const [selectedTrackId, setSelectedTrackId] = useState(null)
-    const [tracks, setTracks] = useState<TrackType[] | null>(null)
-
-    useEffect(() => {
-        console.log('this is effect')
-
-        fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks', {
-            headers: {
-                'api-key': 'b6e7c1da-779a-4e6a-81a7-c0ea69e72c3f',
-            },
-        })
-            .then((res) => res.json())
-            .then((json) => setTracks(json.data))
-    }, [])
-
-    if (tracks === null) {
-        return (
-            <>
-                <h1>Musicfun player</h1>
-                <h2>Loading...</h2>
-            </>
-        )
-    } else if (tracks.length === 0) {
-        return (
-            <>
-                <h1>Musicfun player</h1>
-                <h2>No tracks</h2>
-            </>
-        )
-    }
+export function App() {
+    const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
+    const handleSelectedTrack = (id: string | null) => setSelectedTrackId(id)
 
     return (
         <>
-            <h1>Musicfun player</h1>
-            <button
-                onClick={() => {
-                    setSelectedTrackId(null)
-                }}
-            >
-                Reset
-            </button>
-            <ul>
-                {tracks.map((track) => (
-                    <li
-                        key={track.id}
-                        style={{
-                            border: track.id === selectedTrackId ? '1px solid orange' : 'none',
-                        }}
-                    >
-                        <div
-                            onClick={() => {
-                                setSelectedTrackId(track.id)
-                            }}
-                        >
-                            {track.attributes.title}
-                        </div>
-                        <audio controls src={track.attributes.attachments[0].url}></audio>
-                    </li>
-                ))}
-            </ul>
+            <Header />
+            <SideBar />
+            <div style={{ display: 'flex', gap: '20px', padding: '20px' }}>
+                <TracksList
+                    selectedTrackId={selectedTrackId}
+                    onSelectedTrack={handleSelectedTrack}
+                />
+                <TrackDetails selectedTrackId={selectedTrackId} />
+            </div>
+            <Footer />
         </>
     )
 }
-
-export default App
