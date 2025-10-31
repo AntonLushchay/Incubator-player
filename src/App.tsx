@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 export function App() {
     const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
-    const handleSelectedTrack = (id: string | null) => setSelectedTrackId(id)
+    const handleSelectedTrack = (id: string | null): void => setSelectedTrackId(id)
 
     return (
         <>

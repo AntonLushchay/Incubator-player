@@ -1,16 +1,10 @@
-import type { TrackType } from '../types'
+import type { TracksListType, ListProps } from '../types'
 
 import { useEffect, useState } from 'react'
 import { TrackItem } from './TrackItem'
 
-export function TracksList({
-    selectedTrackId,
-    onSelectedTrack,
-}: {
-    selectedTrackId: string | null
-    onSelectedTrack: (id: string | null) => void
-}) {
-    const [tracks, setTracks] = useState<TrackType[] | null>(null)
+export function TracksList({ selectedTrackId, onSelectedTrack }: ListProps) {
+    const [tracks, setTracks] = useState<Array<TracksListType> | null>(null)
     const handleTrackSelectedChange = (id: string | null) => onSelectedTrack?.(id)
 
     useEffect(() => {

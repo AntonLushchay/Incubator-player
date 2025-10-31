@@ -1,14 +1,6 @@
-import type { TrackType } from '../types'
+import type { ItemsProps } from '../types'
 
-export function TrackItem({
-    track,
-    isSelected,
-    onTrackSelectedChange,
-}: {
-    track: TrackType
-    isSelected: boolean
-    onTrackSelectedChange: (id: string | null) => void
-}) {
+export function TrackItem({ track, isSelected, onTrackSelectedChange }: ItemsProps) {
     const handleClick = () => onTrackSelectedChange(track.id)
 
     return (
