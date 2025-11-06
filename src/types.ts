@@ -1,6 +1,16 @@
 export type TracksListType = {
     id: string
     attributes: {
+        title: string
+        attachments: Array<{
+            url: string
+        }>
+    }
+}
+
+export type DownloadedTrackDetailsType = {
+    id: string
+    attributes: {
         lyrics: string | null
         title: string
         attachments: Array<{

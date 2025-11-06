@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
-import type { TracksListType, TrackDetailsProps } from '../types'
+import type { DownloadedTrackDetailsType, TrackDetailsProps } from '../types'
 
 export function TrackDetails({ selectedTrackId }: TrackDetailsProps) {
-    const [downloadedTrackDetails, setDownloadedTrackDetails] = useState<TracksListType | null>(
-        null,
-    )
+    const [downloadedTrackDetails, setDownloadedTrackDetails] =
+        useState<DownloadedTrackDetailsType | null>(null)
 
     useEffect(() => {
         console.log('this is effect into TrackDetails')
