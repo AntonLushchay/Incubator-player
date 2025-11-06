@@ -2,21 +2,14 @@ import type { TracksListType, ListProps } from '../types'
 
 import { useEffect, useState } from 'react'
 import { TrackItem } from './TrackItem'
+import { getTracksList } from '../dal/api'
 
 export function TracksList({ selectedTrackId, onSelectedTrack }: ListProps) {
     const [tracks, setTracks] = useState<Array<TracksListType> | null>(null)
     const handleTrackSelectedChange = (id: string | null) => onSelectedTrack?.(id)
 
     useEffect(() => {
-        console.log('this is effect useEffect into TracksList')
-
-        fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks', {
-            headers: {
-                'api-key': 'b6e7c1da-779a-4e6a-81a7-c0ea69e72c3f',
-            },
-        })
-            .then((res) => res.json())
-            .then((json) => setTracks(json.data))
+        getTracksList().then((json) => setTracks(json.data))
     }, [])
 
     if (tracks === null) {

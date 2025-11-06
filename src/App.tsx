@@ -1,8 +1,8 @@
-import { Header } from './components/Header.tsx'
-import { SideBar } from './components/Side-bar.tsx'
-import { TracksList } from './components/TracksList.tsx'
-import { TrackDetails } from './components/TrackDetails.tsx'
-import { Footer } from './components/Footer.tsx'
+import { Header } from './ui/Header.tsx'
+import { SideBar } from './ui/Side-bar.tsx'
+import { TracksList } from './ui/TracksList.tsx'
+import { TrackDetails } from './ui/TrackDetails.tsx'
+import { Footer } from './ui/Footer.tsx'
 import { useState } from 'react'
 
 export function App() {

@@ -1,3 +1,5 @@
+export type GetTrackListOutput = { data: Array<TracksListType> }
+
 export type TracksListType = {
     id: string
     attributes: {
@@ -8,7 +10,9 @@ export type TracksListType = {
     }
 }
 
-export type DownloadedTrackDetailsType = {
+export type GetTrackDetailsOutput = { data: TrackDetailsResource }
+
+export type TrackDetailsResource = {
     id: string
     attributes: {
         lyrics: string | null

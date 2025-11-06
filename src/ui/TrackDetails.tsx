@@ -1,25 +1,18 @@
 import { useEffect, useState } from 'react'
-import type { DownloadedTrackDetailsType, TrackDetailsProps } from '../types'
+import type { TrackDetailsResource, TrackDetailsProps } from '../types'
+import { getTrack } from '../dal/api'
 
 export function TrackDetails({ selectedTrackId }: TrackDetailsProps) {
     const [downloadedTrackDetails, setDownloadedTrackDetails] =
-        useState<DownloadedTrackDetailsType | null>(null)
+        useState<TrackDetailsResource | null>(null)
 
     useEffect(() => {
-        console.log('this is effect into TrackDetails')
-
         if (!selectedTrackId) {
             setDownloadedTrackDetails(null)
             return
         }
 
-        fetch(`https://musicfun.it-incubator.app/api/1.0/playlists/tracks/${selectedTrackId}`, {
-            headers: {
-                'api-key': 'b6e7c1da-779a-4e6a-81a7-c0ea69e72c3f',
-            },
-        })
-            .then((res) => res.json())
-            .then((json) => setDownloadedTrackDetails(json.data))
+        getTrack(selectedTrackId).then((json) => setDownloadedTrackDetails(json.data))
     }, [selectedTrackId])
 
     return (
