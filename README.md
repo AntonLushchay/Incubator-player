@@ -1,69 +1,115 @@
-# React + TypeScript + Vite
+# Musicfun Player
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Status](https://img.shields.io/badge/status-In%20Progress-yellow)
+![Type](https://img.shields.io/badge/type-Pet%20Project-orange)
+![Audience](https://img.shields.io/badge/audience-Portfolio-purple)
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Веб-приложение музыкального плеера с интеграцией REST API, позволяющее слушать музыку, просматривать детали треков и работать с проигрывателем в реальном времени.
 
-## Expanding the ESLint configuration
+Это обучающий проект на основе курса **IT-Incubator**, целью которого является глубокое изучение **Frontend Development** на профессиональном уровне.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+> ⚠️ **Note:** Проект находится в стадии активной разработки. На данный момент реализована только малая часть функциональности плеера (загрузка треков, проигрывание, просмотр деталей). UI компоненты (Header, Footer, SideBar) расширяются по мере прохождения курса.
 
-```js
-export default tseslint.config([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
+## 🎯 О проекте
 
-            // Remove tseslint.configs.recommended and replace with this
-            ...tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            ...tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            ...tseslint.configs.stylisticTypeChecked,
+**Musicfun Player** — это pet-project, созданный с целью прокачать навыки **Frontend Development** через практическое применение современного стека React-экосистемы.
 
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
+Этот проект — часть долгосрочной образовательной программы и будет активно развиваться. В процессе разработки планируется достичь экспертизы в следующих областях:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+-   **ReactJS** — глубокое понимание API, хуков, lifecycle и patterns
+-   **JavaScript** — замыкания, асинхронность (Promise, async/await), работа с API
+-   **TypeScript** — строгая типизация для надежности и масштабируемости кода
+-   **HTML/CSS** — семантическая верстка и стилизация
+-   **Architecture** — правильная структура проекта, модульность, паттерны проектирования
+-   **DevOps** — Git, CI/CD, Docker, понимание процессов деплоя
+-   **Security** — безопасность на фронтенде, работа с API ключами
+-   **Algorithms** — оценка сложности кода и оптимизация производительности
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+## ✨ Функциональность
 
-export default tseslint.config([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs['recommended-typescript'],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended,
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
+### Реализовано ✅
+
+-   🎵 **Загрузка треков** — интеграция с REST API для получения списка треков
+-   ▶️ **HTML5 Плеер** — встроенный проигрыватель с контролем воспроизведения (play/pause/volume)
+-   📋 **Список треков** — интерактивный список с возможностью выбора трека
+-   🎼 **Детали трека** — просмотр информации о треке (название, текст песни/лирика)
+-   🔄 **State Management** — управление состоянием выбранного трека и загрузки данных
+-   🎨 **Визуальная обратная связь** — подсветка выбранного трека, индикаторы загрузки
+
+### В разработке 🚧
+
+-   📱 Адаптивный дизайн
+-   🎯 Улучшение Header и Footer
+-   🧭 Функциональная SideBar навигация
+-   🔍 Поиск и фильтрация треков
+-   ⭐ Избранные треки
+
+## 🛠 Технологический стек
+
+### Core
+
+-   **React** 19.1 — библиотека для построения UI
+-   **TypeScript** 5.8 — строгая типизация и проверка типов на этапе разработки
+-   **Vite** 7.1 — быстрый сборщик и dev-сервер с HMR
+
+### Качество кода и инструменты
+
+-   **ESLint** 9.33 — анализ и поддержание качества кода (конфиг: Airbnb / TypeScript recommended)
+-   **React Hooks ESLint Plugin** — дополнительная проверка правил для React хуков
+-   **HTML5 Audio API** — встроенный JavaScript API для работы с аудио
+
+## 🚀 Установка и запуск
+
+Чтобы запустить проект локально:
+
+1. **Клонируйте репозиторий:**
+
+    ```bash
+    git clone https://github.com/AntonLushchay/it-incubator-player.git
+    cd it-incubator-player
+    ```
+
+2. **Установите зависимости:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Запустите режим разработки:**
+
+    ```bash
+    npm run dev
+    ```
+
+    Приложение будет доступно по адресу: `http://localhost:5173`
+
+### API интеграция
+
+Приложение взаимодействует с REST API для получения данных о музыкальных треках. Используется встроенный Fetch API для HTTP запросов.
+
+## 📚 Чему я учусь на этом проекте
+
+1. **React практика** — компоненты, хуки, управление состоянием
+2. **TypeScript** — типизация компонентов, интерфейсы, строгий контроль типов
+3. **REST API** — интеграция с внешними API, обработка ответов, ошибок
+4. **HTML5 Media API** — работа с встроенным аудио плеером
+5. **DevOps и Git** — версионирование, структура коммитов
+6. **Code Quality** — ESLint, форматирование, чистый код
+7. **Производительность** — оптимизация рендеров, управление памятью
+
+## 🔮 Планы развития
+
+-   Расширение функциональности (плейлисты, история воспроизведения)
+-   Улучшение архитектуры (разделение на слои, state management)
+-   Добавление тестов (Unit, Integration, E2E)
+-   Оптимизация производительности
+-   Развёртывание демо версии
+
+---
+
+_Автор: [AntonLushchay](https://github.com/AntonLushchay)_
