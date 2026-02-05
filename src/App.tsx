@@ -3,11 +3,10 @@ import { SideBar } from './ui/Side-bar.tsx'
 import { TracksList } from './ui/TracksList.tsx'
 import { TrackDetails } from './ui/TrackDetails.tsx'
 import { Footer } from './ui/Footer.tsx'
-import { useState } from 'react'
+import { useSelectedTrack } from './bll/useSelectedTrack.tsx'
 
 export function App() {
-    const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
-    const handleSelectedTrack = (id: string | null): void => setSelectedTrackId(id)
+    const { selectedTrackId, handleSetSelectedTrack } = useSelectedTrack()
 
     return (
         <>
@@ -16,9 +15,9 @@ export function App() {
             <div style={{ display: 'flex', gap: '20px', padding: '20px' }}>
                 <TracksList
                     selectedTrackId={selectedTrackId}
-                    onSelectedTrack={handleSelectedTrack}
+                    onSelectedTrack={handleSetSelectedTrack}
                 />
-                <TrackDetails selectedTrackId={selectedTrackId} />
+                <TrackDetails trackId={selectedTrackId} />
             </div>
             <Footer />
         </>

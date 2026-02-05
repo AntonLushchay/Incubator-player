@@ -1,26 +1,15 @@
-import { useEffect, useState } from 'react'
-import type { TrackDetailsResource, TrackDetailsProps } from '../types'
-import { getTrack } from '../dal/api'
+import type { TrackDetailsProps } from '../types'
+import { useTrackDetail } from '../bll/useTrackDetail'
 
-export function TrackDetails({ selectedTrackId }: TrackDetailsProps) {
-    const [downloadedTrackDetails, setDownloadedTrackDetails] =
-        useState<TrackDetailsResource | null>(null)
-
-    useEffect(() => {
-        if (!selectedTrackId) {
-            setDownloadedTrackDetails(null)
-            return
-        }
-
-        getTrack(selectedTrackId).then((json) => setDownloadedTrackDetails(json.data))
-    }, [selectedTrackId])
+export function TrackDetails({ trackId }: TrackDetailsProps) {
+    const { downloadedTrackDetails } = useTrackDetail({
+        trackId,
+    })
 
     return (
         <div>
             <h2>Details</h2>
-            {selectedTrackId &&
-            downloadedTrackDetails &&
-            selectedTrackId !== downloadedTrackDetails.id ? (
+            {trackId && downloadedTrackDetails && trackId !== downloadedTrackDetails.id ? (
                 <p>Loading...</p>
             ) : (
                 false
@@ -32,7 +21,7 @@ export function TrackDetails({ selectedTrackId }: TrackDetailsProps) {
                     <h4>Lyrics</h4>
                     <p>{downloadedTrackDetails.attributes.lyrics || 'No lyrics'}</p>
                 </div>
-            ) : selectedTrackId ? (
+            ) : trackId ? (
                 <p>Loading...</p>
             ) : (
                 <p>Track is not selected</p>

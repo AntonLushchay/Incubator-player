@@ -35,5 +35,5 @@ export type ItemsProps = {
 }
 
 export type TrackDetailsProps = {
-    selectedTrackId: string | null
+    trackId: string | null
 }

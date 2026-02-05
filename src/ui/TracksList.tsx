@@ -1,16 +1,11 @@
-import type { TracksListType, ListProps } from '../types'
+import { useTracksList } from '../bll/useTracksList'
+import type { ListProps } from '../types'
 
-import { useEffect, useState } from 'react'
 import { TrackItem } from './TrackItem'
-import { getTracksList } from '../dal/api'
 
 export function TracksList({ selectedTrackId, onSelectedTrack }: ListProps) {
-    const [tracks, setTracks] = useState<Array<TracksListType> | null>(null)
+    const { tracks } = useTracksList()
     const handleTrackSelectedChange = (id: string | null) => onSelectedTrack?.(id)
-
-    useEffect(() => {
-        getTracksList().then((json) => setTracks(json.data))
-    }, [])
 
     if (tracks === null) {
         return (
