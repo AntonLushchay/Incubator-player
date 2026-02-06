@@ -1,0 +1,10 @@
+.track {
+    border: 1px solid #5759e7;
+    background-color: rgb(214, 216, 212);
+}
+
+.track--selected {
+    border: 2px solid #e0a82f;
+    background-color: rgb(218, 202, 218);
+    padding: 20px;
+}

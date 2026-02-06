@@ -1,0 +1,17 @@
+.tracksListSection {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.resetButton {
+    padding: 10px;
+    border: 1px solid #5759e7;
+    background-color: thistle;
+}
+
+.trackList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

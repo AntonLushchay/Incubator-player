@@ -11,13 +11,15 @@ export function App() {
     return (
         <>
             <Header />
-            <SideBar />
-            <div style={{ display: 'flex', gap: '20px', padding: '20px' }}>
-                <TracksList
-                    selectedTrackId={selectedTrackId}
-                    onSelectedTrack={handleSetSelectedTrack}
-                />
-                <TrackDetails trackId={selectedTrackId} />
+            <div className='main-content'>
+                <SideBar />
+                <div className='tracks-content'>
+                    <TracksList
+                        selectedTrackId={selectedTrackId}
+                        onSelectedTrack={handleSetSelectedTrack}
+                    />
+                    <TrackDetails trackId={selectedTrackId} />
+                </div>
             </div>
             <Footer />
         </>

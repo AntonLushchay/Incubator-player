@@ -1,5 +1,6 @@
 import { useTracksList } from '../bll/useTracksList'
 import type { ListProps } from '../types'
+import s from '../styles/TrackList.module.css'
 
 import { TrackItem } from './TrackItem'
 
@@ -24,11 +25,13 @@ export function TracksList({ selectedTrackId, onSelectedTrack }: ListProps) {
     }
 
     return (
-        <div>
+        <div className={s.tracksListSection}>
             <h1>Musicfun player</h1>
-            <button onClick={() => handleTrackSelectedChange(null)}>Reset</button>
-            <div style={{ display: 'flex', gap: '30px' }}>
-                <ul>
+            <button className={s.resetButton} onClick={() => handleTrackSelectedChange(null)}>
+                Reset
+            </button>
+            <div>
+                <ul className={s.trackList}>
                     {tracks.map((track) => {
                         return (
                             <TrackItem
